@@ -38,6 +38,9 @@ section {
     padding: 20px;
     width: 50%;
 }
+.divider {
+    height:100px;
+}
 </style>
 <!-- HTML form for user registration -->
 <center>
@@ -59,6 +62,7 @@ section {
         <p>Already have an account? click <a href="login.php">Login</a> to login
         </form>
     </section>
+    <div class="divider"></div>
 </center>
 <?php
     // Checking if the form has been submitted

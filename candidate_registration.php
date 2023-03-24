@@ -64,8 +64,11 @@ section {
 
         <input type="submit" name="submit" value="Register">
         </form>
+        
     </section>
 </center>
+
+<div height="200px"></div>
 
 <?php
     // Checking if the form has been submitted

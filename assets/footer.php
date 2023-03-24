@@ -1,10 +1,6 @@
     <style>
-        html, body {
-            padding: 0;
-            margin: 0;
-        }
         footer {
-            position: absolute;
+            position: fixed;
             /* width:100%; */
             bottom:0px;
             right: 0px;
@@ -30,7 +26,7 @@
             color: #fff;
         }
     </style>
-
+    <div height="200px"></div>
     <footer>
         <p> &copy; Independent National Electoral Commission 2023</p>
         <p>Developed By Matthew Onilude</p> 
