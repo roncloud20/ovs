@@ -25,3 +25,4 @@ if (isset($_POST['voter_id']) && isset($_POST['candidate_id'])) {
 
 $conn->close();
 ?>
+

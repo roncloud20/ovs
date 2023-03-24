@@ -30,3 +30,8 @@ $voter = mysqli_fetch_assoc($result);
 <h1>Welcome, <?php echo $voter['name']; ?>!</h1>
 <p>Your email address is: <?php echo $voter['email']; ?></p>
 <?php }?>
+
+
+<?php 
+    require_once "assets/footer.php";
+?>

@@ -1,4 +1,8 @@
 <style>
+    .error {
+        color: red;
+        text-align: center;
+    }
     .voting-card {
         background-color: #f5f5f5;
         border-radius: 5px;
@@ -62,14 +66,6 @@
     if (isset($_SESSION['voter_id'])) {
         $sql = "SELECT date_of_birth FROM voter WHERE voter_id = $voter_id";
         $result = $conn->query($sql);
-
-        // Check if email already exists
-        $sql = "SELECT * FROM vote WHERE voter_id='$voter_id'";
-        $result = mysqli_query($conn, $sql);
-        if (mysqli_num_rows($result) > 0) {
-            echo "Error: You have already voted";
-            exit();
-        }
         
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
@@ -81,6 +77,13 @@
             if ($age < 18) {
                 $eligible_to_vote = false;
             }
+        }
+        // Check if email already exists
+        $sql = "SELECT * FROM vote WHERE voter_id='$voter_id'";
+        $result = mysqli_query($conn, $sql);
+        if (mysqli_num_rows($result) > 0) {
+            echo "<h1 class='error'>Error: You have already voted</h1>";
+            exit();
         }
     }
 
@@ -117,4 +120,8 @@
     }
 
     $conn->close();
+?>
+
+<?php 
+    require_once "assets/footer.php";
 ?>

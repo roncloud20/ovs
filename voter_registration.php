@@ -121,3 +121,7 @@ if (mysqli_query($conn, $query)) {
     } else {
     echo "<p>Error: " . $db->error . "</p>";
     } -->
+
+    <?php 
+        require_once "assets/footer.php";
+    ?>

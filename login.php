@@ -93,3 +93,7 @@ section {
         </form>
     </section>
 </center>
+
+<?php 
+    require_once "assets/footer.php";
+?>

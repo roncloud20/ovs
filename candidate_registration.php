@@ -49,7 +49,7 @@ section {
 
             <label for="party">Party</label>
             <select name="party">
-                <option value="AAC" >AAC<    /option>
+                <option value="AAC" >AAC</option>
                 <option value="APC">APC</option>
                 <option value="PDP">PDP</option>
                 <option value="LP">LP</option>
@@ -58,8 +58,8 @@ section {
             <label for="position">position</label>
             <select name="position">
                 <option value="President">President</option>
-                <option value="Senate">Senate</option>
-                <option value="Congress">House Of Representative</option>
+                <!-- <option value="Senate">Senate</option>
+                <option value="Congress">House Of Representative</option> -->
             </select>
 
         <input type="submit" name="submit" value="Register">
