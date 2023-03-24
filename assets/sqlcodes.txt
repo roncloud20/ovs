@@ -1,0 +1,42 @@
+CREATE DATABASE inec;
+USE inec;
+
+CREATE TABLE Election (
+  election_id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(255) NOT NULL,
+  start_date DATETIME NOT NULL,
+  end_date DATETIME NOT NULL,
+  description TEXT,
+  PRIMARY KEY (election_id)
+);
+
+CREATE TABLE Voter (
+  voter_id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  date_of_birth DATE NOT NULL,
+  login_type ENUM('voter', 'admin') NOT NULL,
+  is_verified BOOLEAN DEFAULT false,
+  PRIMARY KEY (voter_id),
+  UNIQUE (email)
+);
+
+CREATE TABLE Candidate (
+  candidate_id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(255) NOT NULL,
+  party VARCHAR(255) NOT NULL,
+  position VARCHAR(255) NOT NULL,
+  PRIMARY KEY (candidate_id)
+);
+
+CREATE TABLE Vote (
+  vote_id INT NOT NULL AUTO_INCREMENT,
+  voter_id INT NOT NULL,
+  candidate_id INT NOT NULL,
+  timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (vote_id),
+  UNIQUE (voter_id),
+  FOREIGN KEY (voter_id) REFERENCES Voter(voter_id),
+  FOREIGN KEY (candidate_id) REFERENCES Candidate(candidate_id)
+);

@@ -1,0 +1,58 @@
+// Voter registration page
+// If form submitted
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  
+  // Get form data
+  $name = $_POST['name'];
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+  $dob = $_POST['dob'];
+  
+  // Check if email already exists in database
+  $email_check_query = "SELECT * FROM voters WHERE email='$email' LIMIT 1";
+  $result = mysqli_query($conn, $email_check_query);
+  $user = mysqli_fetch_assoc($result);
+  
+  if ($user) {
+    // Email already exists
+    if ($user['email'] === $email) {
+      echo "Email already registered";
+    }
+  } else {
+    // Email doesn't exist, insert new record
+    $sql = "INSERT INTO voters (name, email, password, date_of_birth) VALUES ('$name', '$email', '$password', '$dob')";
+  
+    if (mysqli_query($conn, $sql)) {
+      echo "Registration successful";
+    } else {
+      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
+  }
+}
+
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registration Page</title>
+</head>
+<body>
+  <h1>Registration Page</h1>
+  <form method="post">
+    <label>Name</label>
+    <input type="text" name="name" required>
+    <br>
+    <label>Email</label>
+    <input type="email" name="email" required>
+    <br>
+    <label>Password</label>
+    <input type="password" name="password" required>
+    <br>
+    <label>Date of Birth</label>
+    <input type="date" name="dob" required>
+    <br>
+    <input type="submit" value="Register">
+  </form>
+</body>
+</html>
