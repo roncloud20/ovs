@@ -54,7 +54,8 @@
                     <li><a href="logout.php">Logout</a></li>
                 <?php } else if(isset($_SESSION["login_type"]) && $_SESSION["login_type"] == "admin") { ?>
                     <li><a href="candidate_registration.php">Register Candidate</a></li>
-                    <!-- <li><a href="create_election.php">Create Election</a></li> -->
+                    <li><a href="candidate.php">Show Candidate</a></li>
+                    <li><a href="create_election.php">Create Election</a></li>
                     <li><a href="logout.php">Logout</a></li>
                 <?php } else if(!isset($_SESSION["login_type"])) { ?>
                     <li><a href="voter_registration.php">Sign In/Up</a></li>

@@ -26,7 +26,7 @@
             color: #fff;
         }
     </style>
-    <div height="200px"></div>
+    
     <footer>
         <p> &copy; Independent National Electoral Commission 2023</p>
         <p>Developed By Matthew Onilude</p> 
