@@ -8,13 +8,14 @@
 ?>
 
 <h1>Create Election</h1>
-<form action="create_election.php" method="post">
+<form action="" method="post">
     <label for="name">Election Name:</label>
-    <select name="name">
+    <input type="text" id="name" name="name" required><br><br>
+    <!-- <select name="name">
         <option value="President">President</option>
         <option value="Senate">Senate</option>
         <option value="Congress">House Of Representative</option>
-    </select> <br/>
+    </select> <br/> -->
 
     <label for="start_date">Start Date:</label>
     <input type="datetime-local" id="start_date" name="start_date" required><br>
@@ -30,24 +31,27 @@
 
 <?php
     // Checking if the form has been submitted
-    if (isset($_POST['submit'])) {
+    // if (isset($_POST['submit'])) {
 
-        // Sanitizing and validating input data
-        $name = mysqli_real_escape_string($conn, $_POST['name']);
-        $start_date = mysqli_real_escape_string($conn, $_POST['start_date']);
-        $end_date = mysqli_real_escape_string($conn, $_POST['end_date']);
-        $description = mysqli_real_escape_string($conn, $_POST['description']);
+        // Get the form data
+        $name = $_POST['name'];
+        $start_date = $_POST['start_date'];
+        $end_date = $_POST['end_date'];
+        $description = $_POST['description'];
 
-        // Inserting the user data into the database
-        $query = "INSERT INTO election (name, start_date, end_date, description) VALUES ('$name', '$start_date', '$end_date', '$description')";
+        // Insert the new election into the database
+        $sql = "INSERT INTO Election (name, start_date, end_date, description)
+                VALUES ('$name', '$start_date', '$end_date', '$description')";
 
-        // check if the query was successful
-        if (mysqli_query($conn, $query)) {
+        if (mysqli_query($conn, $sql)) {
             echo "Election created successfully";
         } else {
-            echo "Error: " . mysqli_error($conn);
+            echo "Error creating election: " . mysqli_error($conn);
         }
-    }
+
+        mysqli_close($conn);
+    // }
+
 ?>
 
 <?php 

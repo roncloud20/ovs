@@ -40,3 +40,15 @@ CREATE TABLE Vote (
   FOREIGN KEY (voter_id) REFERENCES Voter(voter_id),
   FOREIGN KEY (candidate_id) REFERENCES Candidate(candidate_id)
 );
+
+-- Please add this to the code
+CREATE TABLE Accreditation (
+  accreditation_id INT NOT NULL AUTO_INCREMENT,
+  voter_id INT NOT NULL,
+  election_id INT NOT NULL,
+  timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (accreditation_id),
+  UNIQUE (voter_id, election_id),
+  FOREIGN KEY (voter_id) REFERENCES Voter(voter_id),
+  FOREIGN KEY (election_id) REFERENCES Election(election_id)
+);

@@ -50,7 +50,9 @@
                 <li><a href="index.php">Home</a></li>
                 <li><a href="result.php">Election Result</a></li>
                 <?php if(isset($_SESSION["login_type"]) && $_SESSION["login_type"] == "voter") { ?>
-                    <li><a href="vote.php">Voting</a></li>
+                    <li><a href="voter_accreditation.php">Accreditation</a></li>
+                    <!-- <li><a href="vote.php">Voting</a></li> -->
+                    <li><a href="election_display.php">Display Election</a></li>
                     <li><a href="logout.php">Logout</a></li>
                 <?php } else if(isset($_SESSION["login_type"]) && $_SESSION["login_type"] == "admin") { ?>
                     <li><a href="candidate_registration.php">Register Candidate</a></li>

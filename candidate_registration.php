@@ -58,9 +58,25 @@ section {
             <label for="position">position</label>
             <select name="position">
                 <option value="President">President</option>
-                <!-- <option value="Senate">Senate</option>
-                <option value="Congress">House Of Representative</option> -->
+                <option value="Senate">Senate</option>
+                <option value="Congress">House Of Representative</option>
             </select>
+            <label for="election_id">Election:</label>
+		<select name="election_id" id="election_id" required>
+			<?php
+
+			$sql = "SELECT * FROM Election WHERE end_date > NOW()";
+			$result = mysqli_query($conn, $sql);
+
+			if (mysqli_num_rows($result) > 0) {
+				while ($row = mysqli_fetch_assoc($result)) {
+					echo '<option value="'.$row['election_id'].'">'.$row['name'].'</option>';
+				}
+			} else {
+				echo '<option value="">No Elections Available</option>';
+			}
+			?>
+		</select><br><br>
 
         <input type="submit" name="submit" value="Register">
         </form>
@@ -77,9 +93,10 @@ section {
         $name = mysqli_real_escape_string($conn, $_POST['name']);
         $party = mysqli_real_escape_string($conn, $_POST['party']);
         $position = mysqli_real_escape_string($conn, $_POST['position']);
+        $election_id = mysqli_real_escape_string($conn, $_POST['election_id']);
        
         // Inserting the user data into the database
-        $query = "INSERT INTO candidate (name, party, position) VALUES ('$name', '$party', '$position')";
+        $query = "INSERT INTO candidate (name, party, position,election_id) VALUES ('$name', '$party', '$position', '$election_id')";
 
         // check if the query was successful
         if (mysqli_query($conn, $query)) {

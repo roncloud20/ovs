@@ -51,11 +51,14 @@
 </style>
 <?php
     //Adding the header file
-    $title = "Voter";
+    $title = "Voting";
     require_once 'assets/header.php'; 
 
     // Connect to MySQL database
     require_once 'assets/db_connect.php';
+
+    // get candidate id from URL parameter
+    $eid = $_GET['eid'];
 
     // Check if the voter is eligible to vote
     $eligible_to_vote = true;
@@ -89,7 +92,7 @@
 
     // Display the available candidates
     if ($eligible_to_vote) {
-        $sql = "SELECT * FROM Candidate";
+        $sql = "SELECT * FROM Candidate WHERE election_id = $eid";
         $result = $conn->query($sql);
         
         if ($result->num_rows > 0) {
