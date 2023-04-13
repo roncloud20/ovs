@@ -51,7 +51,7 @@
     require_once 'assets/db_connect.php';
 
     // Retrieve all candidates from the database
-    $sql = "SELECT * FROM Candidate";
+    $sql = "SELECT * FROM candidate  ORDER BY position";
     $result = mysqli_query($conn, $sql);
 
     if (!$result) {
@@ -61,7 +61,8 @@
     // Display the candidates in an HTML table
     echo "<center>";
     echo "<section align='center'>";
-    echo "<h1>President Results</h1>";
+    echo "<p>click <a href='candidate_registration.php'>here</a> to register candidate</p>";
+    echo "<h1>All Candidate</h1>";
     echo "<center>";
     echo "<table class='styled-table'>";
     echo "<tr><th>ID</th><th>Name</th><th>Party</th><th>Position</th><th>Action</th></tr>";

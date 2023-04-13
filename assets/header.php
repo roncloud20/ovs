@@ -11,6 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <!-- <link rel="stylesheet" href="assets/style.css"> -->
+    <link rel="icon" type="image/x-icon" href="assets/inecicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $title ?></title>
@@ -55,7 +56,7 @@
                     <li><a href="election_display.php">Display Election</a></li>
                     <li><a href="logout.php">Logout</a></li>
                 <?php } else if(isset($_SESSION["login_type"]) && $_SESSION["login_type"] == "admin") { ?>
-                    <li><a href="candidate_registration.php">Register Candidate</a></li>
+                    <!-- <li><a href="candidate_registration.php">Register Candidate</a></li> -->
                     <li><a href="candidate.php">Show Candidate</a></li>
                     <li><a href="create_election.php">Create Election</a></li>
                     <li><a href="logout.php">Logout</a></li>

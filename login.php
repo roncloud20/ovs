@@ -34,7 +34,7 @@
     }
 
     // Login failed, show an error message
-    $error = 'Invalid email or password.';
+    $error = '<h1 class="error">Invalid email or password.</h1>';
     }
 
     // Close the database connection
@@ -68,11 +68,20 @@ input[type=submit]:hover {
 }
 
 section {
+  margin-top:30px;
   border-radius: 5px;
   background-color: #f2f2f2;
   padding: 20px;
   width: 50%;
-  
+}
+
+.error{
+    color: red;
+    text-align: center;
+}
+.success{
+    color: green;
+    text-align: center;
 }
 </style>
 <!-- HTML form for user registration -->
@@ -91,6 +100,7 @@ section {
             <br>
             <input type="submit" value="Log in"/>
         </form>
+        <p>Don't have an account? click <a href="voter_registration.php">here</a> to Register</p>
     </section>
 </center>
 

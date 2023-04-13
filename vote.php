@@ -48,6 +48,14 @@
         display: flex;
         justify-content: space-between;
     }
+
+    .divider {
+        height:100px;
+    }
+    .success{
+        color: green;
+        text-align: center;
+    }
 </style>
 <?php
     //Adding the header file
@@ -82,7 +90,7 @@
             }
         }
         // Check if email already exists
-        $sql = "SELECT * FROM vote WHERE voter_id='$voter_id'";
+        $sql = "SELECT * FROM vote WHERE election_id='$eid'";
         $result = mysqli_query($conn, $sql);
         if (mysqli_num_rows($result) > 0) {
             echo "<h1 class='error'>Error: You have already voted</h1>";
@@ -108,6 +116,7 @@
                 echo "<p>$party</p>";
                 echo "<p>$position</p>";
                 echo "<form action='submit_vote.php' method='post'>";
+                echo "<input type='hidden' name='election_id' value='$eid'>";
                 echo "<input type='hidden' name='voter_id' value='$voter_id'>";
                 echo "<input type='hidden' name='candidate_id' value='$candidate_id'>";
                 echo "<input type='submit' value='Vote'>";
@@ -119,7 +128,7 @@
             echo "No candidates found";
         }
     } else {
-        echo "Sorry, you are not eligible to vote yet";
+        echo "<h1 class='error'>Sorry, you are not eligible to vote yet</h1>";
     }
 
     $conn->close();
