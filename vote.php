@@ -90,7 +90,7 @@
             }
         }
         // Check if email already exists
-        $sql = "SELECT * FROM vote WHERE election_id='$eid'";
+        $sql = "SELECT * FROM vote WHERE election_id='$eid' AND voter_id='$voter_id'";
         $result = mysqli_query($conn, $sql);
         if (mysqli_num_rows($result) > 0) {
             echo "<h1 class='error'>Error: You have already voted</h1>";
