@@ -42,7 +42,6 @@ CREATE TABLE vote (
   FOREIGN KEY (candidate_id) REFERENCES Candidate(candidate_id)
 );
 
--- Please add this to the codes
 CREATE TABLE Accreditation (
   accreditation_id INT NOT NULL AUTO_INCREMENT,
   voter_id INT NOT NULL,

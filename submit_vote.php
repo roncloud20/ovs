@@ -27,6 +27,7 @@ if (isset($_POST['voter_id']) && isset($_POST['candidate_id']) && isset($_POST['
     
     if ($conn->query($sql) === TRUE) {
         echo "<h1 class='success'>Vote submitted successfully</h1>";
+        echo "<p align='center'>click <a href='election_display.php'>here</a> to Election Display</p>";
     } else {
         echo "Error submitting vote: " . $conn->error;
     }

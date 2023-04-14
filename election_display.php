@@ -100,13 +100,14 @@
 			}
 			else {
 				echo "<p class='error'>You are not accredited to vote in this election.</p>";
+				echo "<p>Click <a href='voter_accreditation.php'>here</a> to get accredited</p>";
 			}
 			echo "</section>";
 			echo "</center>";
 		}
 	}
 	else {
-		echo "<p>No election is currently available.</p>";
+		echo "<p class='error'>No election is currently available.</p>";
 	}
 
 	// Close database connection

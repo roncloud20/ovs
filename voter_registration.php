@@ -86,6 +86,7 @@
         // check if the query was successful
         if (mysqli_query($conn, $query)) {
             echo "<h1 class='success'>Registration successful</h1>";
+            echo "<p align='center'>click <a href='login.php'>here</a> to login</p>";
         } else {
             echo "<h1 class='error'>Error: </h1>" . mysqli_error($conn);
         }

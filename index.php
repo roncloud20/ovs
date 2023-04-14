@@ -29,6 +29,7 @@ $voter = mysqli_fetch_assoc($result);
 <!-- HTML landing page -->
 <h1>Welcome, <?php echo $voter['name']; ?>!</h1>
 <p>Your email address is: <?php echo $voter['email']; ?></p>
+<p>Click <a href="voter_accreditation.php">here</a> to get accredited</p>
 <?php }?>
 
 

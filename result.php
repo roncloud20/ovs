@@ -105,7 +105,35 @@
   echo "</center>";
   echo "</section>";
   echo "</center>";
+  
+  // Query the total number of votes for each candidate in the position
+  $sql = "SELECT Candidate.name AS candidate_name, COUNT(Vote.vote_id) AS vote_count
+  FROM Candidate
+  LEFT JOIN Vote ON Candidate.candidate_id = Vote.candidate_id
+  WHERE Candidate.position = 'Congress'
+  GROUP BY Candidate.candidate_id
+  ORDER BY vote_count DESC";
+  $result = mysqli_query($conn, $sql);
+
+  // Display the election results in a table
+  echo "<center>";
+  echo "<section align='center'>";
+  echo "<h1>House Of Representative Results</h1>";
+  echo "<center>";
+  echo "<table class='styled-table'>";
+  echo "<tr><th>Candidate</th><th>Vote Count</th></tr>";
+  while ($row = mysqli_fetch_assoc($result)) {
+  $candidate_name = $row["candidate_name"];
+  $vote_count = $row["vote_count"];
+  echo "<tr><td>$candidate_name</td><td>$vote_count</td></tr>";
+  }
+  echo "</table>";
+  echo "</center>";
+  echo "</section>";
+  echo "</center>";
+
   echo "<div class='divider'></div>";
+
 
   // Close the database connection
   mysqli_close($conn);
